@@ -17,4 +17,4 @@ curl -L \
   -H "Authorization: Bearer $GH_TOKEN" \
   -H "X-GitHub-Api-Version: 2022-11-28" \
   https://api.github.com/repos/$ORGANIZATION/$REPOSITORY_NAME/issues \
-  -d '{\"title\":\"$TITLE\","\body\":"\$BODY\","\assignees\":"\$ASSIGNEES\","\milestone\":"\$MILESTONE\","labels":"\$LABELS\"}'
+  -d "{\"title\":\"$TITLE\",\"body\":\"$BODY\",\"assignees\":[$ASSIGNEES],\"milestone\":\"$MILESTONE\",\"labels\":[$LABELS]}"
