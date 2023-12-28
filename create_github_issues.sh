@@ -18,11 +18,8 @@ DATA=$(cat <<EOF
   "title": "$TITLE",
   "body": "$BODY",
   "assignees": $(printf '%s' "${ASSIGNEES:+[\"${ASSIGNEES_ARRAY[@]}\"]}"),
-  "milestone": $MILESTONE,
   "labels": $(printf '%s' "${LABELS:+[\"${LABELS_ARRAY[@]}\"]}"),
-  "assignees": ${ASSIGNEES:+["${ASSIGNEES_ARRAY[@]}"]},
-  "milestone": $MILESTONE,
-  "labels": ${LABELS:+["${LABELS_ARRAY[@]}"]}
+  "labels": ${LABELS:+[\"${LABELS_ARRAY[@]}\"]}
 }
 EOF
 )
