@@ -51,7 +51,6 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.DEVWITHKRISHNA_PERSONAL_ACCESS_TOKEN }}
         run: |
-          bash create_github_issues.sh ${{ inputs.organization }} ${{ inputs.repository_name }} ${{ inputs.title }} ${{ inputs.body }} "$({{ inputs.assignees }})" ${{ inputs.milestone }} "$({{ inputs.labels }})"
-
+          bash create_github_issues.sh "${{ inputs.organization }}" "${{ inputs.repository_name }}" "${{ inputs.title }}" "${{ inputs.body }}" "${{ inputs.assignees }}" "${{ inputs.milestone }}" "${{ inputs.labels }}"
 
       
