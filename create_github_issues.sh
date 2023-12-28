@@ -15,16 +15,8 @@ IFS=',' read -ra LABELS_ARRAY <<< "$LABELS"
 
 # Construct JSON data
 
-DATA=$(cat <<EOF
-{
-  "title": "$TITLE",
-  "body": "$BODY",
-  "assignees": ${ASSIGNEES:+[\"${ASSIGNEES_ARRAY[@]}\"]},
-  "milestone": "$MILESTONE",
-  "labels": ${LABELS:+$(printf '"%s",' "${LABELS_ARRAY[@]}" | sed 's/,$//')}
-}
-EOF
-)
+JSON_DATA="{\"title\":\"$TITLE\",\"body\":\"$BODY\",\"assignees\":${ASSIGNEES:+[\"${ASSIGNEES_ARRAY[@]}\"]},\"milestone\":\"$MILESTONE\",\"labels\":${LABELS:+[\"${LABELS_ARRAY[@]}\"]}}"
+
 
 # Make the API call
 
