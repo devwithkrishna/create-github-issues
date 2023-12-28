@@ -9,17 +9,22 @@ MILESTONE=$6
 LABELS=$7
 
 # Use an array for assignees and labels
-
 ASSIGNEES_ARRAY=($ASSIGNEES)
 IFS=',' read -ra LABELS_ARRAY <<< "$LABELS"
 
 # Construct JSON data
-
-JSON_DATA="{\"title\":\"$TITLE\",\"body\":\"$BODY\",\"assignees\":${ASSIGNEES:+[\"${ASSIGNEES_ARRAY[@]}\"]},\"milestone\":\"$MILESTONE\",\"labels\":${LABELS:+[\"${LABELS_ARRAY[@]}\"]}}"
-
+DATA=$(cat <<EOF
+{
+  "title": "$TITLE",
+  "body": "$BODY",
+  "assignees": ${ASSIGNEES:+[\"${ASSIGNEES_ARRAY[@]}\"]},
+  "milestone": "$MILESTONE",
+  "labels": ${LABELS:+[\"${LABELS_ARRAY[@]}\"]}
+}
+EOF
+)
 
 # Make the API call
-
 curl -L \
   -X POST \
   -H "Accept: application/vnd.github.v3+json" \
