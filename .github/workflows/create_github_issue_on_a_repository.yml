@@ -1,0 +1,57 @@
+name: create-github-issues-using-github-workflow
+on:
+  workflow_dispatch:
+    inputs:
+      organization:
+        type: string
+        default: 'devwithkrishna'
+        description: 'The GitHub organization name.'
+        required: true
+      repository_name:
+        type: string
+        default: ''
+        description: 'The github repository where issue will be created.'
+        required: true
+      title:
+        required: true
+        default: ''
+        type: string
+        description: "Issue Title"
+      body:
+        required: true
+        type: string
+        description: "Issue Description/Body."
+        default: ''
+      assignees:
+        required: false
+        type: string
+        description: 'Logins for Users to assign to this issue'
+        default: ''
+      milestone:
+        default: ''
+        required: false
+        type: string
+        description: 'The number of the milestone to associate this issue with' 
+      labels:
+        required: false
+        type: string
+        description: 'Labels to associate with this issue'
+        default: ''
+
+         
+jobs:
+  create-github-issues-using-github-workflow:
+    runs-on: ubuntu-latest
+    steps:           
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Listing the files
+        run: ls -la
+      - name: Execute the program
+        env:
+          GH_TOKEN: ${{ secrets.DEVWITHKRISHNA_PERSONAL_ACCESS_TOKEN }}
+        run: |
+          bash create_github_issues.sh ${{ inputs.organization }} ${{ inputs.repository_name }} ${{ inputs.title }} ${{ inputs.body }} ${{ inputs.assignees}} ${{ inputs.milestone}} ${{ inputs.labels}}
+
+
+      
