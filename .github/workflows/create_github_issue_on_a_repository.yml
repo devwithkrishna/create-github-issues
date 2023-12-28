@@ -27,11 +27,6 @@ on:
         type: string
         description: 'Logins for Users to assign to this issue'
         default: ''
-      milestone:
-        default: ''
-        required: false
-        type: string
-        description: 'The number of the milestone to associate this issue with' 
       labels:
         required: false
         type: string

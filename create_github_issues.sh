@@ -5,8 +5,7 @@ REPOSITORY_NAME=$2
 TITLE=$3
 BODY=$4
 ASSIGNEES=$5
-MILESTONE=$6
-LABELS=$7
+LABELS=$6
 
 # Use an array for assignees and labels
 ASSIGNEES_ARRAY=($ASSIGNEES)
@@ -18,7 +17,6 @@ DATA=$(cat <<EOF
   "title": "$TITLE",
   "body": "$BODY",
   "assignees": ${ASSIGNEES:+[\"${ASSIGNEES_ARRAY[@]}\"]},
-  "milestone": "$MILESTONE",
   "labels": ${LABELS:+[\"${LABELS_ARRAY[@]}\"]}
 }
 EOF
