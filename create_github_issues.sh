@@ -12,15 +12,23 @@ ASSIGNEES_ARRAY=($ASSIGNEES)
 IFS=',' read -ra LABELS_ARRAY <<< "$LABELS"
 
 # Construct JSON data
+# Construct JSON data
 DATA=$(cat <<EOF
 {
   "title": "$TITLE",
   "body": "$BODY",
-  "assignees": ${ASSIGNEES:+[\"${ASSIGNEES_ARRAY[@]}\"]},
-  "labels": ${LABELS:+[\"${LABELS_ARRAY[@]}\"]}
+  "assignees": $(printf '%s' "${ASSIGNEES:+[\"${ASSIGNEES_ARRAY[@]}\"]}"),
+  "milestone": $MILESTONE,
+  "labels": $(printf '%s' "${LABELS:+[\"${LABELS_ARRAY[@]}\"]}"),
+  "assignees": ${ASSIGNEES:+["${ASSIGNEES_ARRAY[@]}"]},
+  "milestone": $MILESTONE,
+  "labels": ${LABELS:+["${LABELS_ARRAY[@]}"]}
 }
 EOF
 )
+
+# DEBIG json
+echo "JSON DATA: $DATA"
 
 # Make the API call
 curl -L \
