@@ -1,4 +1,4 @@
-/#!/bin/bash
+#!/bin/bash
 
 ORGANIZATION=$1
 REPOSITORY_NAME=$2
