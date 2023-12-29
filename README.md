@@ -19,7 +19,6 @@ reference: [create-github-issue](https://docs.github.com/en/rest/issues/issues?a
 * body
 * lables
 * assignees
-* milestone
 
 
 ```
