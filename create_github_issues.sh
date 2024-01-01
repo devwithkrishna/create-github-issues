@@ -12,7 +12,6 @@ ASSIGNEES_ARRAY=($ASSIGNEES)
 IFS=',' read -ra LABELS_ARRAY <<< "$LABELS"
 
 # Construct JSON data
-# Construct JSON data
 DATA=$(cat <<EOF
 {
   "title": "$TITLE",
